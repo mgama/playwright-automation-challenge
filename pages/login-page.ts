@@ -25,6 +25,7 @@ export class LoginPage {
   }
 
   async login() {
+    await this.goto();
     if(process.env.USER_NAME && process.env.PASSWORD) {
         await this.emailAddressInput.fill(process.env.USER_NAME);
         await this.continueButton.click();

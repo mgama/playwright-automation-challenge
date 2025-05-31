@@ -20,7 +20,4 @@ test('Go To Sample Project Page', async ({ page }) => {
     await expect(projectPage.fieldManamementSection).toBeVisible();
     await expect(projectPage.fieldManagementPlans).toBeVisible();
     await expect(projectPage.fieldManagementTasks).toBeVisible();
-
-    await projectPage.fieldManagementTasks.click();
-
 });
