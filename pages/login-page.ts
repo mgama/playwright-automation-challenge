@@ -18,7 +18,7 @@ export class LoginPage {
 
   async goto() {
     if(process.env.BASEURL){
-        await this.page.goto(process.env.BASEURL);
+        await this.page.goto(process.env.BASEURL, {timeout: 60000});
     } else {
         throw error('Please set the BASEURL environment variable');
     }
