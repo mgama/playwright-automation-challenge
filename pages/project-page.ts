@@ -7,6 +7,7 @@ export class ProjectPage {
   readonly fieldManamementSection: Locator;
   readonly fieldManagementPlans: Locator;
   readonly fieldManagementTasks: Locator;
+  readonly fieldManagementForms: Locator;
 
   constructor(page: Page) {
     this.page = page;
@@ -15,6 +16,7 @@ export class ProjectPage {
     this.fieldManamementSection = page.locator("[data-e2e='field-management-section']");
     this.fieldManagementPlans = page.getByRole('link', { name: 'Plans'});
     this.fieldManagementTasks = page.getByRole('link', { name: 'Tasks'});
+    this.fieldManagementForms = page.getByRole('link', { name: 'Forms'});
   }
 
 }
