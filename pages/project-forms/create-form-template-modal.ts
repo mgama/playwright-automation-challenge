@@ -8,6 +8,7 @@ export class CreateFormTemplateModal {
   readonly templateSelectionDropdown: Locator;
   readonly blankTemplateOption: Locator;
   readonly uploadExistingPdfFormOption: Locator;
+  readonly genericDropdownOption: Locator;
 
   constructor(page: Page) {
     this.page = page;
@@ -17,6 +18,7 @@ export class CreateFormTemplateModal {
     this.templateSelectionDropdown = this.modal.locator('[data-e2e="create-form-template-modal-template-selection-dropdown"]');
     this.blankTemplateOption = this.modal.locator('[data-e2e="create-form-template-modal-new-blank-template-button"]');
     this.uploadExistingPdfFormOption = this.page.locator('[data-e2e="create-new-project-modal-clone-existing-project-btn"]');
+    this.genericDropdownOption = this.page.locator('.dropdown-option');
   }
 
   async createNewTemplate(templateName: string, templateOption: string) {
@@ -36,7 +38,7 @@ export class CreateFormTemplateModal {
             await this.uploadExistingPdfFormOption.click();
             break
         default:
-            await this.blankTemplateOption.click();
+            await this.genericDropdownOption.getByText(templateOption).click();
             break;
     }
   }

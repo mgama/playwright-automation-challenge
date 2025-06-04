@@ -8,6 +8,7 @@ export class ProjectFormsPage {
   readonly newTemplateButton: Locator;
   readonly createNewTemplateButton: Locator;
   readonly createFormTemplateModal: CreateFormTemplateModal;
+  readonly templatesTable: Locator;
 
   constructor(page: Page) {
     this.page = page;
@@ -16,11 +17,16 @@ export class ProjectFormsPage {
     this.newTemplateButton = this.page.locator('[data-e2e="new-form-dropdown-new-template-btn"]');
     this.createNewTemplateButton = this.page.locator('create-new-template-button');
     this.createFormTemplateModal = new CreateFormTemplateModal(page);
+    this.templatesTable = this.page.locator('.templates-table');
   }
 
   async createNewTemplate() {
     await this.newFormButton.click();
     await this.newTemplateButton.click();
     await this.createNewTemplateButton.click();
+  }
+
+  async searchTemplateInTemplateTable(templateName: string) {
+    return this.templatesTable.getByText(templateName);
   }
 }
