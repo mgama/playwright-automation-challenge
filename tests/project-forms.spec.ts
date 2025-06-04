@@ -1,0 +1,50 @@
+import { test, expect } from '@playwright/test';
+import { LoginPage } from '../pages/login-page';
+import { HomePage } from '../pages/home-page';
+import { ProjectPage } from '../pages/project-page';
+import { ProjectFormsPage } from '../pages/project-forms/project-forms-page';
+
+test.describe('Project Forms Smoketests', async() => {
+    let loginPage: LoginPage;
+    let homePage: HomePage;
+    let projectPage: ProjectPage;
+    let projectFormsPage: ProjectFormsPage;
+    let newTaskTitle: '';
+
+    test.beforeEach(async({ page }) => {
+        loginPage = new LoginPage(page);
+        homePage = new HomePage(page);
+        projectPage = new ProjectPage(page);
+        projectFormsPage = new ProjectFormsPage(page);
+
+        await loginPage.login();
+
+        await expect(homePage.newProjectButton).toBeVisible();
+
+        await homePage.goToProject('My first project');
+
+        await expect(projectPage.fieldManagementForms).toBeVisible();
+
+        await projectPage.fieldManagementForms.click();
+
+        newTaskTitle = 'Test task ' + Math.random().toString(36).substring(2,7);
+    })
+
+    test('Create a New Form Template', async () => {
+
+        await test.step('Verify the Headers of the Project Forms Page', async() => {
+            await expect(projectFormsPage.newFormButton).toBeVisible();
+            await expect(projectFormsPage.actionsDropdown).toBeVisible();
+        });
+
+        await test.step('Try to create a new Template using the Create Form Template Modal', async() => {
+            await projectFormsPage.createNewTemplate();
+
+            await expect(projectFormsPage.createFormTemplateModal.modal).toBeVisible();
+            await expect(projectFormsPage.createFormTemplateModal.createButton).toBeDisabled();
+            await expect(projectFormsPage.createFormTemplateModal.templateNameInput).toBeEnabled();
+
+        });
+    });
+
+});

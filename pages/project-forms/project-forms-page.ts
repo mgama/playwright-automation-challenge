@@ -1,13 +1,26 @@
 import { expect, type Locator, type Page } from '@playwright/test';
+import { CreateFormTemplateModal } from './create-form-template-modal';
 
-export class ProjectTasksPage {
+export class ProjectFormsPage {
   readonly page: Page;
   readonly newFormButton: Locator; 
   readonly actionsDropdown: Locator;
+  readonly newTemplateButton: Locator;
+  readonly createNewTemplateButton: Locator;
+  readonly createFormTemplateModal: CreateFormTemplateModal;
 
   constructor(page: Page) {
     this.page = page;
     this.newFormButton = this.page.getByRole('button', {name: 'New form'});
     this.actionsDropdown = this.page.locator('[data-e2e="forms-actions-dropdown-btn"]');
+    this.newTemplateButton = this.page.locator('[data-e2e="new-form-dropdown-new-template-btn"]');
+    this.createNewTemplateButton = this.page.locator('create-new-template-button');
+    this.createFormTemplateModal = new CreateFormTemplateModal(page);
+  }
+
+  async createNewTemplate() {
+    await this.newFormButton.click();
+    await this.newTemplateButton.click();
+    await this.createNewTemplateButton.click();
   }
 }

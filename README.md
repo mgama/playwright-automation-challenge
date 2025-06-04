@@ -15,6 +15,8 @@ This project is intened to showcase a prototype of the playwright test automatio
 
 ### Installing
 
+- npm install
+- npx playwright install
 
 ### Executing tests
 
