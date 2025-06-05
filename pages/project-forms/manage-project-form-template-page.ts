@@ -18,15 +18,15 @@ export class ManageProjectFormTemplatePage {
     this.page = page;
     this.container = this.page.locator('manage-project-form-template-page');
     this.unpublishedTemplateBanner = this.container.locator('fw-banner.form-template-unpublished-warning-banner');
-    this.publishButton = this.container.locator('[data-e2e="form-template-header-publish-btn"]');
-    this.unpublishButton = this.container.locator('[data-e2e="form-template-header-unpublish-btn"]');
-    this.previewButton = this.container.locator('[data-e2e="form-template-header-preview-btn"]');
-    this.formSectionHeader = this.container.locator('[data-e2e="form-section-header-name"]');
-    this.actionsDropdownHeaderButton = this.container.locator('[data-e2e="manage-form-template-actions-dropdown-btn"]');
-    this.duplicationDropdownOption = this.container.locator('[data-e2e="manage-form-template-actions-dropdown-duplicate-btn"]');
-    this.publishToAccountDropdownOption = this.container.locator('[data-e2e="manage-form-template-actions-dropdown-publish-btn"]');
-    this.deleteDropdownOption = this.container.locator('[data-e2e="manage-form-template-actions-dropdown-delete-btn"]');
-    this.deleteTemplateConfirmButton = this.page.locator('[data-e2e="confirm-action-modal-action-btn"]');
+    this.publishButton = this.page.getByTestId('form-template-header-publish-btn');
+    this.unpublishButton = this.page.getByTestId('form-template-header-unpublish-btn');
+    this.previewButton = this.page.getByTestId('form-template-header-preview-btn');
+    this.formSectionHeader = this.page.getByTestId('form-section-header-name');
+    this.actionsDropdownHeaderButton = this.page.getByTestId('manage-form-template-actions-dropdown-btn');
+    this.duplicationDropdownOption = this.page.getByTestId('manage-form-template-actions-dropdown-duplicate-btn');
+    this.publishToAccountDropdownOption = this.page.getByTestId('manage-form-template-actions-dropdown-publish-btn');
+    this.deleteDropdownOption = this.page.getByTestId('manage-form-template-actions-dropdown-delete-btn');
+    this.deleteTemplateConfirmButton = this.page.getByTestId('confirm-action-modal-action-btn');
   }
 
   async getFormSectionHeader(headerSectionTitle: string) {

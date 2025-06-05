@@ -13,11 +13,11 @@ export class TasksStatusDropdown {
   constructor(page: Page) {
     this.page = page;
     this.statusLabel = this.page.locator('.status-label');
-    this.priorityOneOption = this.page.locator('[data-e2e="task-status-choice-Priority 1-dropdown-btn"]');
-    this.priorityTwoOption = this.page.locator('[data-e2e="task-status-choice-Priority 2-dropdown-btn"]');
-    this.priorityThreeOption = this.page.locator('[data-e2e="task-status-choice-Priority 3-dropdown-btn"]');
-    this.completedOption = this.page.locator('[data-e2e="task-status-choice-Completed-dropdown-btn"]');
-    this.verifiedOption = this.page.locator('[data-e2e="task-status-choice-Verified-dropdown-btn"]');
+    this.priorityOneOption = this.page.getByTestId('task-status-choice-Priority 1-dropdown-btn');
+    this.priorityTwoOption = this.page.getByTestId('task-status-choice-Priority 2-dropdown-btn');
+    this.priorityThreeOption = this.page.getByTestId('task-status-choice-Priority 3-dropdown-btn');
+    this.completedOption = this.page.getByTestId('task-status-choice-Completed-dropdown-btn');
+    this.verifiedOption = this.page.getByTestId('task-status-choice-Verified-dropdown-btn');
     this.deleteTaskOption = this.page.getByText('Delete task');
   }
 

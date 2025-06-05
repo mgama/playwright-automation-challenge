@@ -10,10 +10,10 @@ export class LoginPage {
 
   constructor(page: Page) {
     this.page = page;
-    this.emailAddressInput = page.getByRole('textbox', { name: 'Email address'});
-    this.continueButton = page.getByRole('button', {name: 'Continue'});
-    this.passwordInput = page.getByRole('textbox', { name: 'Password'});
-    this.loginButton = page.getByRole('button', {name: 'Log in'});
+    this.emailAddressInput = this.page.getByRole('textbox', { name: 'Email address'});
+    this.continueButton = this.page.getByRole('button', {name: 'Continue'});
+    this.passwordInput = this.page.getByRole('textbox', { name: 'Password'});
+    this.loginButton = this.page.getByRole('button', {name: 'Log in'});
   }
 
   async goto() {

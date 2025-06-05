@@ -14,10 +14,10 @@ export class CreateFormTemplateModal {
     this.page = page;
     this.modal = this.page.locator('.create-new-form-template-modal');
     this.createButton = this.modal.getByRole('button', {name: 'Create'});
-    this.templateNameInput = this.modal.locator('[data-e2e="create-form-template-modal-name-input"]');
-    this.templateSelectionDropdown = this.modal.locator('[data-e2e="create-form-template-modal-template-selection-dropdown"]');
-    this.blankTemplateOption = this.modal.locator('[data-e2e="create-form-template-modal-new-blank-template-button"]');
-    this.uploadExistingPdfFormOption = this.page.locator('[data-e2e="create-new-project-modal-clone-existing-project-btn"]');
+    this.templateNameInput = this.modal.getByTestId('create-form-template-modal-name-input');
+    this.templateSelectionDropdown = this.modal.getByTestId('create-form-template-modal-template-selection-dropdown');
+    this.blankTemplateOption = this.modal.getByTestId('create-form-template-modal-new-blank-template-button');
+    this.uploadExistingPdfFormOption = this.page.getByTestId('create-new-project-modal-clone-existing-project-btn');
     this.genericDropdownOption = this.page.locator('.dropdown-option');
   }
 

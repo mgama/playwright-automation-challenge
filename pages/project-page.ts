@@ -11,12 +11,12 @@ export class ProjectPage {
 
   constructor(page: Page) {
     this.page = page;
-    this.newPlanButton = page.getByRole('button', {name: 'New plan'});
-    this.newFolderButton = page.getByRole('button', {name: 'New folder'});
-    this.fieldManamementSection = page.locator("[data-e2e='field-management-section']");
-    this.fieldManagementPlans = page.getByRole('link', { name: 'Plans'});
-    this.fieldManagementTasks = page.getByRole('link', { name: 'Tasks'});
-    this.fieldManagementForms = page.getByRole('link', { name: 'Forms'});
+    this.newPlanButton = this.page.getByRole('button', {name: 'New plan'});
+    this.newFolderButton = this.page.getByRole('button', {name: 'New folder'});
+    this.fieldManamementSection = this.page.getByTestId('field-management-section');
+    this.fieldManagementPlans = this.page.getByRole('link', { name: 'Plans'});
+    this.fieldManagementTasks = this.page.getByRole('link', { name: 'Tasks'});
+    this.fieldManagementForms = this.page.getByRole('link', { name: 'Forms'});
   }
 
 }

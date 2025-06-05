@@ -28,13 +28,13 @@ export class TasksEditModal {
   
   constructor(page: Page) {
     this.page = page;
-    this.modal = page.locator('[data-e2e="task-view-edit-modal"]');
-    this.editTaskName = page.locator('[data-e2e="task-edit-name"]');
+    this.modal = this.page.getByTestId('task-view-edit-modal');
+    this.editTaskName = this.page.getByTestId('task-edit-name');
     this.editTaskNameInput = this.modal.locator('.edit-task-name-input');
-    this.editTaskNameCheckButton = this.modal.locator('[data-e2e="task-edit-check"]');
-    this.editTaskNameCancelButton = this.modal.locator('[data-e2e="task-edit-cancel-btn"]');
+    this.editTaskNameCheckButton = this.modal.getByTestId('task-edit-check');
+    this.editTaskNameCancelButton = this.modal.getByTestId('task-edit-cancel-btn');
     this.taskStatusDropdown = new TasksStatusDropdown(page);
-    this.closeModalButton = this.modal.locator('[data-e2e="task-edit-dismiss"]');
+    this.closeModalButton = this.modal.getByTestId('task-edit-dismiss');
   }
 
   async createTask(taskProperties: task){

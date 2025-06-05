@@ -13,8 +13,8 @@ export class ProjectFormsPage {
   constructor(page: Page) {
     this.page = page;
     this.newFormButton = this.page.getByRole('button', {name: 'New form'});
-    this.actionsDropdown = this.page.locator('[data-e2e="forms-actions-dropdown-btn"]');
-    this.newTemplateButton = this.page.locator('[data-e2e="new-form-dropdown-new-template-btn"]');
+    this.actionsDropdown = this.page.getByTestId('forms-actions-dropdown-btn');
+    this.newTemplateButton = this.page.getByTestId('new-form-dropdown-new-template-btn');
     this.createNewTemplateButton = this.page.locator('create-new-template-button');
     this.createFormTemplateModal = new CreateFormTemplateModal(page);
     this.templatesTable = this.page.locator('.templates-table');

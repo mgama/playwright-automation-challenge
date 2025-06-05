@@ -26,12 +26,12 @@ export class ProjectTasksPage {
   
   constructor(page: Page) {
     this.page = page;
-    this.dueTodayTaskColumn = page.locator('fw-task-column').filter({ hasText: 'Due Today' });
-    this.priorityOneTaskColumn = page.locator('fw-task-column').filter({ hasText: 'Priority 1' });
-    this.priorityTwoTaskColumn = page.locator('fw-task-column').filter({ hasText: 'Priority 2' });
-    this.priorityThreeTaskColumn = page.locator('fw-task-column').filter({ hasText: 'Priority 3' });
-    this.completedTaskColumn = page.locator('fw-task-column').filter({ hasText: 'Completed' });
-    this.verifiedTaskColumn = page.locator('fw-task-column').filter({ hasText: 'Verified' });
+    this.dueTodayTaskColumn = this.page.locator('fw-task-column').filter({ hasText: 'Due Today' });
+    this.priorityOneTaskColumn = this.page.locator('fw-task-column').filter({ hasText: 'Priority 1' });
+    this.priorityTwoTaskColumn = this.page.locator('fw-task-column').filter({ hasText: 'Priority 2' });
+    this.priorityThreeTaskColumn = this.page.locator('fw-task-column').filter({ hasText: 'Priority 3' });
+    this.completedTaskColumn = this.page.locator('fw-task-column').filter({ hasText: 'Completed' });
+    this.verifiedTaskColumn = this.page.locator('fw-task-column').filter({ hasText: 'Verified' });
 
     this.priorityOneNewTask = this.priorityOneTaskColumn.getByText('+ New task');
     this.priorityTwoNewTask = this.priorityTwoTaskColumn.getByText('+ New task');
@@ -40,13 +40,13 @@ export class ProjectTasksPage {
     this.completedNewTask = this.completedTaskColumn.getByText('+ New task');
     this.verifiedNewTask = this.verifiedTaskColumn.getByText('+ New task');
 
-    this.newTaskTitleInput = page.getByRole('textbox', {name: "Enter title"});
-    this.newTaskSubmitButton = page.getByRole('button', {name: "Submit"});
-    this.newTaskCancelButton = page.getByRole('button', {name: "Cancel"});
-    this.actionsDropdown = page.locator('[data-e2e="tasks-page-actions-dropdown"]');
-    this.deleteAction = page.locator('[data-e2e="tasks-page-action-dropdown-delete"]');
-    this.modalDeleteButton = page.locator('.modal-footer').getByRole('button', {name: "Delete"});
-    this.newTaskHeaderButton = page.locator('[data-e2e="create-new-task"]').getByRole('button', {name: 'New task'});
+    this.newTaskTitleInput = this.page.getByRole('textbox', {name: "Enter title"});
+    this.newTaskSubmitButton = this.page.getByRole('button', {name: "Submit"});
+    this.newTaskCancelButton = this.page.getByRole('button', {name: "Cancel"});
+    this.actionsDropdown = this.page.getByTestId('tasks-page-actions-dropdown');
+    this.deleteAction = this.page.getByTestId('tasks-page-action-dropdown-delete');
+    this.modalDeleteButton = this.page.locator('.modal-footer').getByRole('button', {name: "Delete"});
+    this.newTaskHeaderButton = this.page.getByTestId('create-new-task').getByRole('button', {name: 'New task'});
     this.tasksEditModal = new TasksEditModal(page);
   }
 
@@ -80,7 +80,7 @@ export class ProjectTasksPage {
   }
 
   async selectTaskByTitle(taskTitle: string) {
-    await this.page.locator('[data-e2e="task-item-checkbox-' + taskTitle + '"]').click({force: true});
+    await this.page.getByTestId('task-item-checkbox-' + taskTitle + '"]').click({force: true});
   }
 
   async deleteTaskByTitle(taskTitle: string) {

@@ -33,6 +33,10 @@ export default defineConfig({
 
     /* Enabling screenshots on test failures */
     screenshot: 'only-on-failure',
+
+    // Changing to use data-e2e instead of data-test-id
+    // Documentation can be found here: https://playwright.dev/docs/locators#set-a-custom-test-id-attribute
+    testIdAttribute: 'data-e2e'
   },
   /* Increasing overall test timeout */
   timeout: 120_000,

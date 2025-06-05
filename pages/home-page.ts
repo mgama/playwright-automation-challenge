@@ -7,8 +7,8 @@ export class HomePage {
 
   constructor(page: Page) {
     this.page = page;
-    this.newProjectButton = page.getByRole('button', {name: 'New project'});
-    this.generateReportsButton = page.getByRole('button', {name: 'Generate reports'});
+    this.newProjectButton = this.page.getByRole('button', {name: 'New project'});
+    this.generateReportsButton = this.page.getByRole('button', {name: 'Generate reports'});
   }
 
   async goto() {
