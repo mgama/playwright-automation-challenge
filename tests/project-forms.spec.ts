@@ -4,7 +4,7 @@ import { HomePage } from '../pages/home-page';
 import { ProjectPage } from '../pages/project-page';
 import { ProjectFormsPage } from '../pages/project-forms/project-forms-page';
 import { ManageProjectFormTemplatePage } from '../pages/project-forms/manage-project-form-template-page';
-import { PreviewTemplateModal } from '../pages/project-forms/preview-template-modal';
+import { PreviewTemplateModal } from '../pages/project-forms/components/preview-template-modal';
 
 test.describe('Project Forms Smoketests', async() => {
     const testProjectTitle = 'My first project';

@@ -1,5 +1,5 @@
 import { expect, type Locator, type Page } from '@playwright/test';
-import { TasksEditModal } from './tasks-edit-modal';
+import { TasksEditModal } from './components/tasks-edit-modal';
 
 export class ProjectTasksPage {
   readonly page: Page;
