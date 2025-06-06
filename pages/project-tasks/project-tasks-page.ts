@@ -80,7 +80,7 @@ export class ProjectTasksPage {
   }
 
   async selectTaskByTitle(taskTitle: string) {
-    await this.page.getByTestId('task-item-checkbox-' + taskTitle + '"]').click({force: true});
+    await this.page.getByTestId('task-item-checkbox-' + taskTitle).click({force: true});
   }
 
   async deleteTaskByTitle(taskTitle: string) {
