@@ -7,11 +7,8 @@ test('Go To Sample Project Page', async ({ page }) => {
     const loginPage = new LoginPage(page);
     const homePage = new HomePage(page);
     const projectPage = new ProjectPage(page);
-    await loginPage.goto();
 
     await loginPage.login();
-
-    await expect(homePage.newProjectButton).toBeVisible();
 
     await homePage.goToProject('Sample project - JBO 6');
 

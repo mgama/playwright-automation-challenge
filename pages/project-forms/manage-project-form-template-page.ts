@@ -13,6 +13,7 @@ export class ManageProjectFormTemplatePage {
   readonly deleteDropdownOption: Locator;
   readonly unpublishedTemplateBanner: Locator;
   readonly deleteTemplateConfirmButton: Locator;
+  readonly newSectionButton: Locator;
 
   constructor(page: Page) {
     this.page = page;
@@ -27,6 +28,7 @@ export class ManageProjectFormTemplatePage {
     this.publishToAccountDropdownOption = this.page.getByTestId('manage-form-template-actions-dropdown-publish-btn');
     this.deleteDropdownOption = this.page.getByTestId('manage-form-template-actions-dropdown-delete-btn');
     this.deleteTemplateConfirmButton = this.page.getByTestId('confirm-action-modal-action-btn');
+    this.newSectionButton = this.page.getByRole('button', {name: '+ New section'});
   }
 
   async getFormSectionHeader(headerSectionTitle: string) {

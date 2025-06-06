@@ -26,15 +26,11 @@ test.describe('Project Forms Smoketests', async() => {
         previewTemplateModal = new PreviewTemplateModal(page);
 
         await loginPage.login();
-
-        await expect(homePage.newProjectButton).toBeVisible();
-
         await homePage.goToProject(testProjectTitle);
 
         await expect(projectPage.fieldManagementForms).toBeVisible();
 
         await projectPage.fieldManagementForms.click();
-
         newTemplateTitle = 'Test template ' + Math.random().toString(36).substring(2,7);
     })
 
@@ -57,7 +53,6 @@ test.describe('Project Forms Smoketests', async() => {
         });
 
         await test.step('Expect the Manage Project Form Template Page to display', async() => {
-            await expect(manageProjectFormTemplatePage.container).toBeAttached();
             await expect(manageProjectFormTemplatePage.actionsDropdownHeaderButton).toBeVisible();
             await expect(manageProjectFormTemplatePage.publishButton).toBeVisible();
             await expect(manageProjectFormTemplatePage.previewButton).toBeVisible();
@@ -74,7 +69,7 @@ test.describe('Project Forms Smoketests', async() => {
             await expect(projectFormsPage.actionsDropdown).toBeVisible();
         });
 
-        await test.step('Create a new Template using the Create Form Template Modal', async() => {
+        await test.step('Create a new Daily Report Template using the Create Form Template Modal', async() => {
             await projectFormsPage.createNewTemplate();
 
             await expect(projectFormsPage.createFormTemplateModal.modal).toBeVisible();
@@ -84,13 +79,20 @@ test.describe('Project Forms Smoketests', async() => {
             await projectFormsPage.createFormTemplateModal.createNewTemplate(dailyReportTitle, templateOption);
         });
 
-        await test.step('Expect the Manage Project Form Template Page to display', async() => {
-            await expect(manageProjectFormTemplatePage.container).toBeAttached();
+        await test.step('Expect the Manage Project Form Template Page to display and assert default template section headers', async() => {
             await expect(manageProjectFormTemplatePage.actionsDropdownHeaderButton).toBeVisible();
             await expect(manageProjectFormTemplatePage.publishButton).toBeVisible();
             await expect(manageProjectFormTemplatePage.previewButton).toBeVisible();
             await expect(manageProjectFormTemplatePage.unpublishedTemplateBanner).toBeVisible();
             await expect(await manageProjectFormTemplatePage.getFormSectionHeader('Weather')).toBeVisible();
+            await expect(await manageProjectFormTemplatePage.getFormSectionHeader('General Info')).toBeVisible();
+            await expect(await manageProjectFormTemplatePage.getFormSectionHeader('Work Log')).toBeVisible();
+            await expect(await manageProjectFormTemplatePage.getFormSectionHeader('Equipment Log')).toBeVisible();
+            await expect(await manageProjectFormTemplatePage.getFormSectionHeader('Material Delivery')).toBeVisible();
+            await expect(await manageProjectFormTemplatePage.getFormSectionHeader('Activity Log')).toBeVisible();
+            await expect(await manageProjectFormTemplatePage.getFormSectionHeader('Attachments')).toBeVisible();
+            await expect(await manageProjectFormTemplatePage.getFormSectionHeader('Signature')).toBeVisible();
+            await expect(await manageProjectFormTemplatePage.newSectionButton).toBeVisible();
         });
 
         await test.step('Verify Preview Template Modal appears with Preview feature', async() => {
@@ -114,29 +116,34 @@ test.describe('Project Forms Smoketests', async() => {
 
     test('Create a new template with pre-built template Inspection Request, publish template and delete published template', async () => {
         const templateOption = 'Inspection Request';
-        const dailyReportTitle = newTemplateTitle + ' ' + templateOption;
+        const inspectionRequestTitle = newTemplateTitle + ' ' + templateOption;
 
         await test.step('Verify the Headers of the Project Forms Page', async() => {
             await expect(projectFormsPage.newFormButton).toBeVisible();
             await expect(projectFormsPage.actionsDropdown).toBeVisible();
         });
 
-        await test.step('Create a new Template using the Create Form Template Modal', async() => {
+        await test.step('Create a new Inspection Request Template using the Create Form Template Modal', async() => {
             await projectFormsPage.createNewTemplate();
 
             await expect(projectFormsPage.createFormTemplateModal.modal).toBeVisible();
 
-            await projectFormsPage.createFormTemplateModal.createNewTemplate(dailyReportTitle, templateOption);
+            await projectFormsPage.createFormTemplateModal.createNewTemplate(inspectionRequestTitle, templateOption);
         });
 
-        await test.step('Expect the Manage Project Form Template Page to display', async() => {
+        await test.step('Expect the Manage Project Form Template Page to display and assert default template section headers', async() => {
             await expect(manageProjectFormTemplatePage.container).toBeAttached();
             await expect(manageProjectFormTemplatePage.publishButton).toBeVisible();
             await expect(manageProjectFormTemplatePage.unpublishedTemplateBanner).toBeVisible();
             await expect(await manageProjectFormTemplatePage.getFormSectionHeader('Inspection References')).toBeVisible();
+            await expect(await manageProjectFormTemplatePage.getFormSectionHeader('Inspection Results')).toBeVisible();
+            await expect(await manageProjectFormTemplatePage.getFormSectionHeader('Signature')).toBeVisible();
+            await expect(await manageProjectFormTemplatePage.newSectionButton).toBeVisible();
         });
 
         await test.step('Publish the Template', async() => {
+            await expect(manageProjectFormTemplatePage.unpublishButton).toBeHidden();
+            
             await manageProjectFormTemplatePage.publishButton.click();
 
             await expect(manageProjectFormTemplatePage.unpublishButton).toBeAttached();
@@ -146,7 +153,7 @@ test.describe('Project Forms Smoketests', async() => {
         await test.step('Delete the template after publishing it', async() => {
             await manageProjectFormTemplatePage.deleteTemplate();
 
-            await expect(await projectFormsPage.searchTemplateInTemplateTable(dailyReportTitle)).toBeHidden();
+            await expect(await projectFormsPage.searchTemplateInTemplateTable(inspectionRequestTitle)).toBeHidden();
         });
     });
 

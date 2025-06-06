@@ -18,9 +18,6 @@ test.describe('Project Tasks Smoketests', async() => {
         projectTasksPage = new ProjectTasksPage(page);
 
         await loginPage.login();
-
-        await expect(homePage.newProjectButton).toBeVisible();
-
         await homePage.goToProject('Sample project - JBO 6');
 
         await expect(projectPage.fieldManagementTasks).toBeVisible();
@@ -56,6 +53,7 @@ test.describe('Project Tasks Smoketests', async() => {
 
             await projectTasksPage.newTaskSubmitButton.click();
 
+            //Verify the Task Pop up is hidden
             await expect(projectTasksPage.newTaskSubmitButton).toBeHidden();
             await expect(projectTasksPage.newTaskCancelButton).toBeHidden();
         });
