@@ -25,6 +25,9 @@ export class TasksEditModal {
   readonly editTaskNameCancelButton: Locator;
   readonly taskStatusDropdown: TasksStatusDropdown;
   readonly closeModalButton: Locator;
+  readonly attachmentsButton: Locator;
+  readonly attachmentsFormOption: Locator;
+  readonly existingFormOption: Locator;
   
   constructor(page: Page) {
     this.page = page;
@@ -35,6 +38,9 @@ export class TasksEditModal {
     this.editTaskNameCancelButton = this.modal.getByTestId('task-edit-cancel-btn');
     this.taskStatusDropdown = new TasksStatusDropdown(page);
     this.closeModalButton = this.modal.getByTestId('task-edit-dismiss');
+    this.attachmentsButton = this.modal.getByTestId('task-edit-attachments-btn');
+    this.attachmentsFormOption = this.modal.locator('.add-forms');
+    this.existingFormOption = this.modal.locator('.add-form').filter({hasText: 'Existing form'});
   }
 
   async createTask(taskProperties: task){
